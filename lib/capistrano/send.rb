@@ -1,7 +1,2 @@
-require "capistrano/send/version"
-
-module Capistrano
-  module Send
-    # Your code goes here...
-  end
-end
+require 'capistrano/send/libnotify'
+require 'capistrano/send/notify-send'

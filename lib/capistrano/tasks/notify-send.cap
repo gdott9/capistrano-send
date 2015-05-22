@@ -1,0 +1,14 @@
+namespace :send do
+  namespace :'notify-send' do
+    desc "Display a notification using notify-send"
+    task :notify do
+      expire_time = 10000
+      summary = "Deploy successful on #{fetch(:stage)}!"
+      body = revision_log_message
+
+      `notify-send --expire-time=#{expire_time} '#{summary}' '#{body}'`
+    end
+  end
+end
+
+after 'deploy:finished', 'send:notify-send:notify'

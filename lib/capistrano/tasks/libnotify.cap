@@ -1,0 +1,21 @@
+begin
+  require 'libnotify'
+rescue LoadError
+end
+
+namespace :send do
+  namespace :libnotify do
+    desc "Display a notification using libnotify"
+    task :notify do
+      if defined?(Libnotify)
+        Libnotify.show(
+          summary: "Deploy successful on #{fetch(:stage)}!",
+          body: revision_log_message,
+          timeout: 10,
+        )
+      end
+    end
+  end
+end
+
+after 'deploy:finished', 'send:libnotify:notify'
