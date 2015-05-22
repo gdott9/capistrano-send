@@ -1,13 +1,8 @@
-begin
-  require 'libnotify'
-rescue LoadError
-end
-
 namespace :send do
   namespace :libnotify do
     desc "Display a notification using libnotify"
     task :notify do
-      if defined?(Libnotify)
+      if Capistrano::Send::Libnotify.supported?
         Libnotify.show(
           summary: "Deploy successful on #{fetch(:stage)}!",
           body: revision_log_message,
