@@ -1,3 +1,1 @@
-require 'capistrano/send/mail'
-require 'capistrano/send/libnotify'
-require 'capistrano/send/notify-send'
+load File.expand_path('../tasks/send.cap', __FILE__)

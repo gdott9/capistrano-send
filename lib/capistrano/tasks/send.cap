@@ -1,0 +1,13 @@
+namespace :send do
+  task :set_release_log do
+    invoke "send:#{scm}:set_release_log"
+  end
+
+  task :load_scm do
+    load "capistrano/send/#{fetch(:scm)}.rb"
+  end
+end
+
+Capistrano::DSL.stages.each do |stage|
+  after stage, 'send:load_scm'
+end

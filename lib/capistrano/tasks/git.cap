@@ -1,0 +1,13 @@
+namespace :send do
+  namespace :git do
+    task :set_release_log do
+      on release_roles :all do
+        within repo_path do
+          with fetch(:git_environmental_variables) do
+            set :release_log, strategy.log
+          end
+        end
+      end
+    end
+  end
+end
