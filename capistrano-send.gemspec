@@ -9,6 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Guillaume Dott"]
   spec.email         = ["guillaume+github@dott.fr"]
   spec.summary       = %q{Send notifications after a deploy with Capistrano}
+  spec.description   = %q{This gem provides some notifiers to send notifications after a deploy with Capistrano.}
   spec.homepage      = "https://github.com/gdott9/capistrano-send"
   spec.license       = "MIT"
 
@@ -21,5 +22,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
 
   spec.add_development_dependency "libnotify", "~> 0.9.0"
-  spec.add_development_dependency "mail", "~> 2.6.3"
+  spec.add_development_dependency "mail", "~> 2.6"
 end
