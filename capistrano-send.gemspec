@@ -8,9 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Capistrano::Send::VERSION
   spec.authors       = ["Guillaume Dott"]
   spec.email         = ["guillaume+github@dott.fr"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Send notifications after a deploy with Capistrano}
+  spec.homepage      = "https://github.com/gdott9/capistrano-send"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -20,4 +19,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
+
+  spec.add_development_dependency "libnotify", "~> 0.9.0"
+  spec.add_development_dependency "mail", "~> 2.6.3"
 end
