@@ -1,0 +1,21 @@
+namespace :send do
+  namespace :mail do
+    desc "Send an email when deploy is finished"
+    task :notify do
+      if Capistrano::Send::Mail.supported?
+        config = fetch(:send_mail, {})
+
+        Mail.deliver do
+          to config[:to]
+          from config[:from]
+          subject "Deploy successful on #{fetch(:stage)}!"
+          body revision_log_message
+
+          delivery_method config[:via] || :smtp, config[:via_options] || {}
+        end
+      end
+    end
+  end
+end
+
+after 'deploy:finished', 'send:mail:notify'
