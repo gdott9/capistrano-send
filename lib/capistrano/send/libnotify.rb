@@ -7,7 +7,7 @@ module Capistrano
   module Send
     module Libnotify
       def self.supported?
-        defined?(Libnotify) && Libnotify::API.instance_methods.include?(:notify_init)
+        defined?(::Libnotify) && ::Libnotify::API.instance_methods.include?(:notify_init)
       end
     end
   end
