@@ -25,7 +25,12 @@ require 'capistrano/send/all'
 
 The `mail` notifier sends an email with some useful informations about the release.
 
-Add this line to your `Capfile`:
+To use it, you need the [mail](https://rubygems.org/gems/mail/) gem. Add this to your `Gemfile`:
+```ruby
+gem 'mail'
+```
+
+Then add this line to your `Capfile`:
 ```ruby
 require 'capistrano/send/mail'
 ```
