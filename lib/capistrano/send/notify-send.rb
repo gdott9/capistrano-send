@@ -1,3 +1,5 @@
+require 'capistrano/send'
+
 module Capistrano
   module Send
     module NotifySend

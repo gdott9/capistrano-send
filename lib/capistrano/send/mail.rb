@@ -1,3 +1,5 @@
+require 'capistrano/send'
+
 begin
   require 'mail'
 rescue LoadError
