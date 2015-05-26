@@ -5,11 +5,16 @@ namespace :send do
       if Capistrano::Send::Mail.supported?
         config = fetch(:send_mail, {})
 
+        invoke 'send:set_release_log'
+
+        body = revision_log_message << "\n\n"
+        body << "Changes:\n#{fetch(:release_log)}"
+
         Mail.deliver do
           to config[:to]
           from config[:from]
           subject "Deploy successful on #{fetch(:stage)}!"
-          body revision_log_message
+          body body
 
           delivery_method config[:via] || :smtp, config[:via_options] || {}
         end
